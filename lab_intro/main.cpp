@@ -6,7 +6,8 @@
 #include <iostream>
 
 #include "rgbapixel.h"
-#include "png.h"
+
+// TODO: Compile the program and run it. Then, answer the following questions:
 
 using namespace std;
 
@@ -52,12 +53,16 @@ PNG drawCrosshairs(PNG original, int centerX, int centerY, RGBAPixel color)
  */
 PNG brighten(PNG original, int amount)
 {
+    if (amount < 0 || amount > 255)
+        return original;
+
     /// You can assume amount is positive.
-    for (int yi = 0; yi < original.height(); yi++)
+    for (int yi = 0; yi < original.height(); yi++) 
     {
-		for (int xi = 0; xi < original.width(); xi++){
-			// Your code here
-	    }
+        for (int xi = 0; xi < original.width(); xi++)
+        {
+          original(xi, yi)->alpha = amount;
+        }
     }
     return original;
 }
@@ -74,11 +79,10 @@ PNG brighten(PNG original, int amount)
  */
 PNG blendImages(PNG firstImage, PNG secondImage)
 {
-    for (int yi = 0; yi < min(firstImage.height(), secondImage.height()); yi++)
-    {
-		for (int xi = 0; xi < min(firstImage.width(), secondImage.width()); xi++){
-			// Your code here
-	    }
+    for (int yi = 0; yi < min(firstImage.height(), secondImage.height()); yi++) {
+      for (int xi = 0; xi < min(firstImage.width(), secondImage.width()); xi++){
+
+        }
     }
     return firstImage;
 }

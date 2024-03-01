@@ -5,6 +5,8 @@
  * @author Chase Geigle
  * @date Spring 2012
  */
+#ifndef RGBAPIXEL_H
+#define RGBAPIXEL_H
 
 #include <cstdint>
 
@@ -20,3 +22,6 @@ class RGBAPixel
 
         RGBAPixel(uint8_t r, uint8_t g, uint8_t b);
 };
+
+
+#endif // RGBAPIXEL_H
