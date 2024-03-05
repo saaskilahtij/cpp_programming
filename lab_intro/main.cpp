@@ -55,14 +55,13 @@ PNG brighten(PNG original, int amount)
     if (amount < 0 || amount > 255)
         return original;
 
-    /// You can assume amount is positive.
     for (int yi = 0; yi < original.height(); yi++) 
     {
         for (int xi = 0; xi < original.width(); xi++)
         {
-            original(xi, yi)->red = amount;
-            original(xi, yi)->green = amount;
-            original(xi, yi)->blue = amount;
+            original(xi, yi)->red = std::min(original(xi, yi)->red + amount, 255);
+            original(xi, yi)->green = std::min(original(xi, yi)->green + amount, 255);
+            original(xi, yi)->blue = std::min(original(xi, yi)->blue + amount, 255);
         }
     }
     return original;
@@ -80,9 +79,9 @@ PNG brighten(PNG original, int amount)
 PNG blendImages(PNG firstImage, PNG secondImage)
 {
     PNG averagedImage(firstImage.width(), firstImage.height());
-    for (int yi = 0; yi < min(firstImage.height(), secondImage.height()); yi++)
+    for (int yi = 0; yi < firstImage.height(); yi++)
     {
-        for (int xi = 0; xi < min(firstImage.width(), secondImage.width()); xi++)
+        for (int xi = 0; xi < firstImage.width(); xi++)
         {
             averagedImage(xi, yi)->red = (firstImage(xi, yi)->red + secondImage(xi, yi)->red) / 2;
             averagedImage(xi, yi)->green = (firstImage(xi, yi)->green + secondImage(xi, yi)->green) / 2;
