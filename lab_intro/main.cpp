@@ -60,7 +60,9 @@ PNG brighten(PNG original, int amount)
     {
         for (int xi = 0; xi < original.width(); xi++)
         {
-          original(xi, yi)->alpha = amount;
+            original(xi, yi)->red = amount;
+            original(xi, yi)->green = amount;
+            original(xi, yi)->blue = amount;
         }
     }
     return original;
