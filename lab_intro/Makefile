@@ -9,7 +9,7 @@ LINKER_OPTS = -lpng
 all : $(EXE)
 
 $(EXE) : $(OBJS)
-	$(LINKER) $(OBJS) $(LINKER_OPTS) -o $(EXE)
+	$(LINKER) $(OBJS) -o $(EXE) $(LINKER_OPTS)
 
 main.o : main.cpp png.h rgbapixel.h
 	$(COMPILER) $(COMPILER_OPTS) main.cpp

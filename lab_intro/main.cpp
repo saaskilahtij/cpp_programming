@@ -6,8 +6,7 @@
 #include <iostream>
 
 #include "rgbapixel.h"
-
-// TODO: Compile the program and run it. Then, answer the following questions:
+#include "png.h"
 
 using namespace std;
 
@@ -66,7 +65,6 @@ PNG brighten(PNG original, int amount)
     }
     return original;
 }
-
 /**
  * This function blends, or averages, two PNGs together. That is, each pixel in
  * the returned image consists of the averaged components (red, green, blue) of
@@ -79,12 +77,21 @@ PNG brighten(PNG original, int amount)
  */
 PNG blendImages(PNG firstImage, PNG secondImage)
 {
-    for (int yi = 0; yi < min(firstImage.height(), secondImage.height()); yi++) {
-      for (int xi = 0; xi < min(firstImage.width(), secondImage.width()); xi++){
-
+    PNG averagedImage(firstImage.width(), firstImage.height());
+    for (int yi = 0; yi < min(firstImage.height(), secondImage.height()); yi++)
+    {
+        for (int xi = 0; xi < min(firstImage.width(), secondImage.width()); xi++)
+        {
+            RGBAPixel *firstPixel = firstImage(xi, yi);
+            RGBAPixel *secondPixel = secondImage(xi, yi);
+            RGBAPixel *averagedPixel = averagedImage(xi, yi);
+            
+            averagedPixel->red = (firstPixel->red + secondPixel->red) / 2;
+            averagedPixel->green = (firstPixel->green + secondPixel->green) / 2;
+            averagedPixel->blue = (firstPixel->blue + secondPixel->blue) / 2;
         }
     }
-    return firstImage;
+    return averagedImage;
 }
 
 

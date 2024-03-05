@@ -13,7 +13,7 @@
 // c-style includes
 #include <stdio.h>
 #include <stdlib.h>
-//#include <png.h>
+#include <png.h>
 
 // c++ style includes
 #include <string>
@@ -22,8 +22,6 @@
 
 // local includes
 #include "rgbapixel.h"
-#include "png.h"
-
 
 using std::cerr;
 using std::endl;

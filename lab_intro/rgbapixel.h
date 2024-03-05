@@ -9,6 +9,7 @@
 #define RGBAPIXEL_H
 
 #include <cstdint>
+using std::uint8_t;
 
 class RGBAPixel
 {

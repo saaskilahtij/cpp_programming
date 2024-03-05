@@ -7,7 +7,6 @@
  * @date Created: Spring 2012
  * @date Modified: Summer 2012
  */
-#include <png.h>
 
 #include "png.h"
 
