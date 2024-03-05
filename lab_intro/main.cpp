@@ -82,13 +82,9 @@ PNG blendImages(PNG firstImage, PNG secondImage)
     {
         for (int xi = 0; xi < min(firstImage.width(), secondImage.width()); xi++)
         {
-            RGBAPixel *firstPixel = firstImage(xi, yi);
-            RGBAPixel *secondPixel = secondImage(xi, yi);
-            RGBAPixel *averagedPixel = averagedImage(xi, yi);
-            
-            averagedPixel->red = (firstPixel->red + secondPixel->red) / 2;
-            averagedPixel->green = (firstPixel->green + secondPixel->green) / 2;
-            averagedPixel->blue = (firstPixel->blue + secondPixel->blue) / 2;
+            averagedImage(xi, yi)->red = (firstImage(xi, yi)->red + secondImage(xi, yi)->red) / 2;
+            averagedImage(xi, yi)->green = (firstImage(xi, yi)->green + secondImage(xi, yi)->green) / 2;
+            averagedImage(xi, yi)->blue = (firstImage(xi, yi)->blue + secondImage(xi, yi)->blue) / 2;
         }
     }
     return averagedImage;
